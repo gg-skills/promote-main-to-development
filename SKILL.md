@@ -279,7 +279,9 @@ For the full reusable command template, see `references/main-to-development-refe
 8. **Resolve conflicts only if authorized.** Use an isolated clone, push the corrected target branch or PR branch only after explicit conflict policy confirmation, then re-check.
 9. **Verify deployments.** Inspect provider state for the merged SHA, including success/failure, timestamps, environment, routing, logs, and per-surface deployment coverage. In monorepos, map each impacted app/package to its deployment project.
 10. **Run runtime checks.** Use project-supplied smoke tests, health endpoints, browser checks, auth/CORS checks, or alias checks.
-11. **Close out.** Report merged PRs, skipped/no-diff repos, conflicts, provider evidence, runtime evidence, and any follow-up.
+11. **Close out.** Report merged PRs, skipped/no-diff repos, conflicts, provider evidence, runtime evidence, and any follow-up. When the runtime-health row has no project command and no page, and those checks were not already marked out of scope, print the two choices below and do not mark either one recommended. Open the harness Ask User picker in that same turn when one exists. A printed token is not a run. This promotion does not edit the app.
+    - `IMPROVE_INSTRUMENTATION`: hand off to `improve-instrumentation/SKILL.md` to add a command and a human view for this release surface, then run that check.
+    - `MARK_RUNTIME_OUT_OF_SCOPE`: leave the runtime row as an anomaly and stop.
 
 ## Reference Loading by Task Type
 
@@ -303,7 +305,7 @@ Before post-merge verification, build a project-specific inventory with these co
 |---------|-------------------|-------|
 | Source control | Merged PR number, URL, and final target SHA | Use `headRefOid` for PR head SHA capture. |
 | CI/CD provider | Build/deploy record for the merged SHA | Verify status, timestamp, environment, and actor. |
-| Runtime health | Health or smoke-test payload from the active environment | Correlate payload time/version/deploy ID when available. |
+| Runtime health | Health or smoke-test payload from the active environment | Correlate payload time/version/deploy ID when available. When this row has no project command and no page, workflow step 11 offers the closeout pair. |
 | Routing/alias layer | Domains, aliases, load balancers, or ingress routes point to the expected deploy | Check non-destructively before applying changes. |
 | Auth/protection layer | Preview protection, auth callbacks, CORS, or credentials behavior match the environment policy | Only run when relevant to the project. |
 | Infrastructure contract | IaC or provider blueprint validates cleanly | Contract validation is not an apply/sync operation. |
@@ -461,6 +463,7 @@ Before finalizing, verify:
 - Use a study or decision skill when branch policy, release scope, or conflict-resolution authority is unclear.
 - Use a monorepo/workspace-aware build or package-manager skill when path ownership, workspace graphs, or package-level tests determine release scope.
 - Use a git/submodule skill when the repository set includes nested repositories, submodules, or meta/root tracking branches.
+- When workflow step 11 offers `IMPROVE_INSTRUMENTATION`, the repair belongs to `improve-instrumentation/SKILL.md`. This skill does not run it and does not edit the app during the promotion.
 
 ## Guidance Alignment
 

@@ -236,3 +236,6 @@ merge execution, CI/CD checks, and runtime health reporting.
 - New PRs should not have empty descriptions; include inferred scope, diff evidence, verification plan, and unknowns.
 - A green PR check is not the same as runtime health. Use the project's defined
   smoke checks before final closeout.
+- When closeout has no project command and no page for runtime health, offer
+  `IMPROVE_INSTRUMENTATION` beside leaving that row out of scope. The pair is
+  workflow step 11 in [SKILL.md](SKILL.md). This skill does not add the probe.

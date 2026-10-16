@@ -280,7 +280,7 @@ For the full reusable command template, see `references/main-to-development-refe
 9. **Verify deployments.** Inspect provider state for the merged SHA, including success/failure, timestamps, environment, routing, logs, and per-surface deployment coverage. In monorepos, map each impacted app/package to its deployment project.
 10. **Run runtime checks.** Use project-supplied smoke tests, health endpoints, browser checks, auth/CORS checks, or alias checks.
 11. **Close out.** Report merged PRs, skipped/no-diff repos, conflicts, provider evidence, runtime evidence, and any follow-up. When the runtime-health row has no project command and no page, and those checks were not already marked out of scope, print the two choices below and do not mark either one recommended. Open the harness Ask User picker in that same turn when one exists. A printed token is not a run. This promotion does not edit the app.
-    - `IMPROVE_INSTRUMENTATION`: hand off to `improve-instrumentation/SKILL.md` to add a command and a human view for this release surface, then run that check.
+    - `IMPROVE_INSTRUMENTATION`: hand off to `instrumentation/SKILL.md` to add a command and a human view for this release surface, then run that check.
     - `MARK_RUNTIME_OUT_OF_SCOPE`: leave the runtime row as an anomaly and stop.
 
 ## Reference Loading by Task Type
@@ -463,7 +463,7 @@ Before finalizing, verify:
 - Use a study or decision skill when branch policy, release scope, or conflict-resolution authority is unclear.
 - Use a monorepo/workspace-aware build or package-manager skill when path ownership, workspace graphs, or package-level tests determine release scope.
 - Use a git/submodule skill when the repository set includes nested repositories, submodules, or meta/root tracking branches.
-- When workflow step 11 offers `IMPROVE_INSTRUMENTATION`, the repair belongs to `improve-instrumentation/SKILL.md`. This skill does not run it and does not edit the app during the promotion.
+- When workflow step 11 offers `IMPROVE_INSTRUMENTATION`, the repair belongs to `instrumentation/SKILL.md`. This skill does not run it and does not edit the app during the promotion.
 
 ## Guidance Alignment
 
